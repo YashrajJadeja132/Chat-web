@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import ChatBox from "./components/ChatBox";
+import ChatList from "./components/ChatList";
 
 function App() {
+  const [selectedUser, setSelectedUser] = useState(undefined);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="chat-app">
+      <div className="chat-list">
+        <ChatList setUser={setSelectedUser} />
+      </div>
+      <div className="chat-box">
+        <ChatBox user={selectedUser} setUser={setSelectedUser} />
+      </div>
     </div>
   );
 }
